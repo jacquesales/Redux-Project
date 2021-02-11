@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// Componente usando o valor sem precisar de props
+
 function Menu(){
     const stateTitulo = useSelector((state) =>
          state.tituloReducer.titulo);
@@ -8,7 +8,7 @@ function Menu(){
     return(
         
         <div>
-            Menu:
+            Menu: 
             {stateTitulo}
         </div>
     )

@@ -8,29 +8,24 @@ export default function App() {
     const [inputTitulo, setInputTitulo] = React.useState("");
 
 
-    // Retorna o state da aplicação redux
-    const frutas = useSelector((state) => state.frutasReducer.frutas); // Sempre que att o estado o Redux volta daqui
+    const frutas = useSelector((state) => state.frutasReducer.frutas); 
     const titulo = useSelector((state) => state.tituloReducer.titulo);
    
     const dispatch = useDispatch();
 
     console.log(frutas); 
     console.log(titulo); 
-    // console.log(frutas[0]);
 
 
     function adicionarFruta(event){
-        event.preventDefault(); // previne o carregamento da página
+        event.preventDefault();
 
-        // Vai criar um objeto ao invés do formData, para enviar
         const objFruta = {
             nome: inputFrutas
         }
 
-        dispatch( {type: "ADICIONAR", value: objFruta}) // Responsável por despachar os actions, pode ficar em qualquer componente
+        dispatch( {type: "ADICIONAR", value: objFruta}) 
     }
-
-
 
     function alterarTitulo(event){
        setInputTitulo(event.target.value);
@@ -43,24 +38,23 @@ export default function App() {
             <Menu/>
             <form>
                 <label>Titulo</label>
-                <input placeholder="Digite o título..." 
+                <input placeholder="Digite um título..." 
                 value={inputTitulo}
                 onChange={alterarTitulo}/>
             </form>
              <h1>{titulo}</h1>
             <form onSubmit={adicionarFruta}>
 
-                <input placehorder="Digite um fruta..."
+                <input placeholder="Digite uma fruta da época..."
                     value={inputFrutas}
                     onChange={(event) => setInputFrutas(event.target.value)}
                  />
                 <button>
-                     Enviar
+                    Adicionar
                 </button>
-            </form>
-            
+            </form>            
 
-             {frutas.map( (fruta, index) =>{ // o map cria index, se precisar
+             {frutas.map( (fruta, index) =>{ 
                  return ( 
                  
                          <li key={index}>{fruta.nome}</li>
